@@ -20,9 +20,14 @@ describe('Page view', () => {
 
 
   it('displays 3 paragraphs', () => {
-
     const view = new View();
     view.addParagraph();
     expect(document.querySelectorAll('p').length).toBe(3);
   });
+
+  it('displays 0 paragraphs after clearParagraphs() is called', () => {
+    const view = new View()
+    view.clearParagraphs();
+    expect(document.querySelectorAll('p').length).toBe(0);
+  })
 });
