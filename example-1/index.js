@@ -4,4 +4,14 @@
 //
 // on Mac (using Chrome), use Option+Command+J to open the console and see this message.
 
+
+const add = require('./add')
+const multiply = require('./multiply')
+
 console.log('Hello from the developer console!');
+
+const date = new Date();
+console.log(date);
+
+const int = multiply(add(4,2), 4);
+console.log(int)
