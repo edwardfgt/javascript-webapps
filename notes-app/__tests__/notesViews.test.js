@@ -29,4 +29,22 @@
       expect(model.getNotes()).toEqual(['Milk the cows']);
       expect(document.querySelector('div#note').innerHTML).toEqual('Milk the cows');
    })
+
+   it('returns the correct notes when displayNotes is called twice', () => {
+    document.body.innerHTML = fs.readFileSync('./index.html');
+    const model = new NotesModel();
+    const view = new NotesView(model);
+
+    const functionSpy = jest.spyOn(view, 'displayNotes');
+
+    const inputEl = document.querySelector('#message-input');
+    const buttonEl = document.querySelector('#add-note-button');
+    inputEl.value = "Milk the cows";
+    buttonEl.click();
+    inputEl.value = "Milk the cows again";
+    buttonEl.click();
+
+    expect(functionSpy).toHaveBeenCalledTimes(2);
+    expect(document.querySelectorAll('div#note').length).toEqual(2);
+   })
  });

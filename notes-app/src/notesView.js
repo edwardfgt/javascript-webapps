@@ -16,6 +16,13 @@ class NotesView{
   }
 
   displayNotes(){
+    let allNotesOnScreen = document.querySelectorAll('div[id="note"]')
+    console.log(allNotesOnScreen)
+    allNotesOnScreen.forEach((div) => {
+      div.remove();
+    })
+    // allNotesOnScreen.innerHTML.remove();
+
     let currentNotes = this.model.getNotes();
     currentNotes.forEach(element => {
       let newDiv = document.createElement('div');
@@ -23,6 +30,9 @@ class NotesView{
       newDiv.innerHTML = element;
       this.mainContainerEl.append(newDiv);
     });
+    document.querySelector('#message-input').value = '';
+
+
   }
 }
 
