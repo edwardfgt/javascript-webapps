@@ -3,6 +3,16 @@ class NotesView{
     this.model = model;
     this.mainContainerEl = document.querySelector('#main-container');
 
+
+    this.buttonEl = document.querySelector('#add-note-button');
+    this.buttonEl.addEventListener('click', () => {
+       this.addNoteToModel();
+    });
+  }
+
+  addNoteToModel(){
+    this.model.addNote(document.querySelector('#message-input').value);
+    this.displayNotes();
   }
 
   displayNotes(){
