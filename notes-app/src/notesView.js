@@ -38,7 +38,6 @@ class NotesView{
     //calls loadnotes from client.js
     await this.client.loadNotes((data) => {
     //data is passed into the function
-    console.log('data passed into loadnotes:', data) 
     this.model.setNotes(data);
     this.displayNotes();
   });

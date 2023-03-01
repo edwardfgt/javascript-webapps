@@ -46,7 +46,7 @@
     expect(document.querySelectorAll('div#note').length).toEqual(2);
    })
 
-  it.only('displays notes from the API', (done) => {
+  it('displays notes from the API', (done) => {
 
     const mockClient = { loadNotes: (callback) => {
       callback(['This note is coming from the server']) 

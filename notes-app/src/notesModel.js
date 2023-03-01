@@ -4,7 +4,6 @@ class NotesModel{
   }
 
   getNotes(){
-    console.log('getNotes:', this.notes)
     return this.notes;
   }
 
