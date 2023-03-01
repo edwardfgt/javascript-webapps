@@ -4,6 +4,7 @@ class NotesModel{
   }
 
   getNotes(){
+    console.log('getNotes:', this.notes)
     return this.notes;
   }
 
@@ -13,6 +14,10 @@ class NotesModel{
 
   reset(){
     this.notes = [];
+  }
+
+  setNotes(notes){
+    this.notes = notes;
   }
 }
 

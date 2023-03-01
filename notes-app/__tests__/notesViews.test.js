@@ -7,6 +7,9 @@
  const NotesModel = require('../src/notesModel');
  const NotesView = require('../src/notesView'); 
  const Client = require('../src/client');
+
+ require('jest-fetch-mock').enableMocks()
+
  
  describe('Notes view', () => {
     let client, view, model, inputEl, buttonEl;
@@ -30,7 +33,6 @@
    it('adds new note and displays on screen when user inputs', () => {
       inputEl.value = "Milk the cows";
       buttonEl.click();
-      // expect(model.getNotes()).toEqual(['Milk the cows']);
       expect(document.querySelector('div#note').innerHTML).toEqual('Milk the cows');
    })
 
@@ -44,8 +46,18 @@
     expect(document.querySelectorAll('div#note').length).toEqual(2);
    })
 
-  // it('displays notes from the API', () => {
-  //   document.body.innerHTML = fs.readFileSync('./index.html');
-    
-  // })
+  it.only('displays notes from the API', (done) => {
+
+    const mockClient = { loadNotes: (callback) => {
+      callback(['This note is coming from the server']) 
+    } }
+
+    view = new NotesView(model, mockClient);
+
+    view.displayNotesFromApi();
+
+    expect(document.querySelectorAll('div#note').length).toEqual(1);
+    expect(document.querySelector('div#note').innerHTML).toEqual('This note is coming from the server');
+    done();
+  })
  });
